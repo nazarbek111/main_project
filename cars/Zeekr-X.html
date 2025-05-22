@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeekr X - Прокат автомобилей</title>
+    <link rel="stylesheet" href="../car-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="../index.html">
+                    <i class="fas fa-car-side"></i>
+                    <span class="logo-text">Nazarbek Premium Cars</span>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <a href="../index.html" class="nav-link">Главная</a>
+                <a href="../cars.html" class="nav-link">Каталог</a>
+                <a href="../index.html#contacts" class="nav-link">Контакты</a>
+                <a href="tel:+77077282036" class="nav-link phone-link">
+                    <i class="fas fa-phone"></i>
+                    +7 707 728 2036
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="namecar">
+        <h1>Zeekr X</h1>
+    </div>
+
+    <section class="car-details" id="zeekr-x">
+        <div class="car-gallery">
+            <img src="../images/Zeekr X.jpg" alt="Zeekr X" class="main-image">
+            <div class="gallery-thumbnails">
+                <img src="../images/Zeekr X.jpg" alt="Внешний вид" onclick="changeMainImage(this.src)">
+                <img src="../images/interior/Zeekr X-interior.jpg" alt="Интерьер" onclick="changeMainImage(this.src)">
+                <img src="../images/interior/Zeekr X-back.jpg" alt="Вид сзади" onclick="changeMainImage(this.src)">
+                <img src="../images/interior/Zeekr X-trunk.jpg" alt="Багажник" onclick="changeMainImage(this.src)">
+            </div>
+        </div>
+        <div class="car-info">
+            <p>Электромобиль нового поколения с футуристическим дизайном и передовыми технологиями.</p>
+            <p><strong>от 45 000 ₸/сутки</strong></p>
+        </div>
+        
+        <form class="booking-form" id="bookingForm">
+            <h2>Форма бронирования</h2>
+            <div class="form-group">
+                <input type="text" placeholder="Ваше имя" required>
+                <input type="tel" placeholder="Телефон" required>
+            </div>
+            <div class="form-group">
+                <input type="date" placeholder="Дата начала аренды" required>
+                <input type="number" placeholder="Количество дней" min="1" required>
+            </div>
+            <button type="submit" id="bookBtn">Забронировать</button>
+            <div id="loader" style="display:none;">🔄 Идёт бронирование...</div>
+            <div id="successMsg" style="display:none; color: limegreen;">✅ Бронирование отправлено!</div>
+        </form>
+        
+        <a href="https://wa.me/77077282036" class="btn secondary"><i class="fab fa-whatsapp"></i> Написать в WhatsApp</a>
+    </section>
+
+    <section class="car-details">
+        <h2>Характеристики и особенности</h2>
+        <div class="car-details-grid">
+            <div class="detail-item">
+                <h3>Мощность</h3>
+                <p>272 л.с.</p>
+            </div>
+            <div class="detail-item">
+                <h3>Запас хода</h3>
+                <p>440 км</p>
+            </div>
+            <div class="detail-item">
+                <h3>Разгон до 100 км/ч</h3>
+                <p>5.6 сек</p>
+            </div>
+            <div class="detail-item">
+                <h3>Объем багажника</h3>
+                <p>362 л</p>
+            </div>
+
+            <div class="detail-item">
+                <span>🔌</span>
+                <p><strong>Электро</strong><br>Экологичное вождение</p>
+            </div>
+            <div class="detail-item">
+                <span>🔋</span>
+                <p><strong>440 км</strong><br>Запас хода</p>
+            </div>
+            <div class="detail-item">
+                <span>🛋</span>
+                <p><strong>5 мест</strong><br>Комфорт для всей семьи</p>
+            </div>
+            <div class="detail-item">
+                <span>🛄</span>
+                <p><strong>362 л</strong><br>Просторный багажник</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const bookBtn = document.getElementById('bookBtn');
+        const loader = document.getElementById('loader');
+        const successMsg = document.getElementById('successMsg');
+        const whatsappLink = document.querySelector('.btn.secondary');
+        const bookingForm = document.getElementById('bookingForm');
+        
+        whatsappLink.style.display = 'none';
+      
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            loader.style.display = 'block';
+            successMsg.style.display = 'none';
+            whatsappLink.style.display = 'none';
+      
+            setTimeout(() => {
+                loader.style.display = 'none';
+                successMsg.style.display = 'block';
+                whatsappLink.style.display = 'inline-block';
+                bookingForm.reset();
+            }, 2000);
+        });
+
+        function changeMainImage(src) {
+            const mainImage = document.querySelector('.main-image');
+            mainImage.style.opacity = '0';
+            setTimeout(() => {
+                mainImage.src = src;
+                mainImage.style.opacity = '1';
+            }, 300);
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+    <section class="car-description">
+        <h2>Описание автомобиля</h2>
+        <p>Zeekr X — современный электрический кроссовер, сочетающий в себе инновационные технологии и премиальный комфорт. Автомобиль оснащен передовыми системами безопасности, включая автопилот, и предлагает впечатляющий запас хода до 440 км на одном заряде. Просторный салон с высококачественными материалами отделки и современной мультимедийной системой делает каждую поездку комфортной и приятной.</p>
+    </section>
+
+    <section class="rental-prices">
+        <h2>Цены на аренду</h2>
+        <table>
+            <tr>
+                <th>Срок аренды</th>
+                <th>Стоимость</th>
+            </tr>
+            <tr>
+                <td>1-2 дня</td>
+                <td>70 000 ₸/сутки</td>
+            </tr>
+            <tr>
+                <td>3-6 дней</td>
+                <td>63 000 ₸/сутки</td>
+            </tr>
+            <tr>
+                <td>7-14 дней</td>
+                <td>55 000 ₸/сутки</td>
+            </tr>
+            <tr>
+                <td>15-25 дней</td>
+                <td>50 000 ₸/сутки</td>
+            </tr>
+            <tr>
+                <td>от 26 дней</td>
+                <td>45 000 ₸/сутки</td>
+            </tr>
+        </table>
+    </section>
+
+    <section class="rental-terms">
+        <h2>Условия аренды</h2>
+        <ul>
+            <li>Паспорт и водительское удостоверение обязательно</li>
+            <li>Минимальный возраст – 23 года</li>
+            <li>Залог – 150 000 ₸</li>
+        </ul>
+    </section>
+
+    <section class="reviews">
+        <h2>Отзывы клиентов</h2>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <p class="review-text">"Впечатляющий электромобиль! Тихий, мощный и очень комфортный. Запаса хода хватает с избытком."</p>
+                <p class="review-author">- Алексей К.</p>
+                <div class="rating">⭐⭐⭐⭐⭐</div>
+            </div>
+            <div class="review-card">
+                <p class="review-text">"Современный автомобиль с отличной динамикой. Особенно порадовала система автопилота."</p>
+                <p class="review-author">- Марат Ж.</p>
+                <div class="rating">⭐⭐⭐⭐⭐</div>
+            </div>
+            <div class="review-card">
+                <p class="review-text">"Очень экономичный в эксплуатации. Зарядка быстрая, расход энергии умеренный."</p>
+                <p class="review-author">- Айгерим С.</p>
+                <div class="rating">⭐⭐⭐⭐⭐</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="additional-features">
+        <h2>Дополнительные услуги</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <i class="fas fa-charging-station"></i>
+                <div>
+                    <h3>Зарядная карта</h3>
+                    <p>Бесплатно</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-map-marked-alt"></i>
+                <div>
+                    <h3>GPS-навигатор</h3>
+                    <p>Бесплатно</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-car"></i>
+                <div>
+                    <h3>Доставка автомобиля</h3>
+                    <p>+3000 ₸</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-shield-alt"></i>
+                <div>
+                    <h3>Страховка КАСКО</h3>
+                    <p>Включено</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <h2>Часто задаваемые вопросы</h2>
+        <details>
+            <summary>Как заряжать автомобиль?</summary>
+            <p>Автомобиль можно заряжать на всех публичных зарядных станциях. Зарядная карта предоставляется бесплатно.</p>
+        </details>
+        <details>
+            <summary>Какой запас хода на полном заряде?</summary>
+            <p>До 440 км при смешанном цикле движения</p>
+        </details>
+        <details>
+            <summary>Что делать, если заряд закончится в пути?</summary>
+            <p>Мы предоставляем круглосуточную техническую поддержку и помощь на дороге</p>
+        </details>
+    </section>
+</body>
+</html>

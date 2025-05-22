@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toyota Hilux Adventure - Прокат автомобилей</title>
+    <link rel="stylesheet" href="../car-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="../index.html">
+                    <i class="fas fa-car-side"></i>
+                    <span class="logo-text">Nazarbek Premium Cars</span>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <a href="../index.html" class="nav-link">Главная</a>
+                <a href="../cars.html" class="nav-link">Каталог</a>
+                <a href="../index.html#contacts" class="nav-link">Контакты</a>
+                <a href="tel:+77077282036" class="nav-link phone-link">
+                    <i class="fas fa-phone"></i>
+                    +7 707 728 2036
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="namecar">
+        <h1>Toyota Hilux Adventure</h1>
+    </div>
+
+    <section class="car-details" id="toyota-hilux-adventure">
+        <div class="car-gallery">
+            <img src="../images/Toyota Hilux Adventure.jpg" alt="Toyota Hilux Adventure" class="main-image">
+            <div class="gallery-thumbnails">
+                <img src="../images/Toyota Hilux Adventure.jpg" alt="Внешний вид" onclick="changeMainImage(this.src)">
+                <img src="../images/interior/Toyota Hilux Adventure-interior.jpg" alt="Интерьер" onclick="changeMainImage(this.src)">
+                <img src="../images/interior/Toyota Hilux Adventure-back.jpg" alt="Вид сзади" onclick="changeMainImage(this.src)">
+                <img src="../images/interior/Toyota Hilux Adventure-trunk.jpg" alt="Багажник" onclick="changeMainImage(this.src)">
+            </div>
+        </div>
+        <div class="car-info">
+            <p>Настоящий внедорожник, созданный для суровых условий. Toyota Hilux Adventure выдержит любые испытания и подарит уверенность в дороге.</p>
+            <p><strong>от 55 000 ₸/сутки</strong></p>
+        </div>
+        
+        <form class="booking-form" id="bookingForm">
+            <h2>Форма бронирования</h2>
+            <div class="form-group">
+                <input type="text" placeholder="Ваше имя" required>
+                <input type="tel" placeholder="Телефон" required>
+            </div>
+            <div class="form-group">
+                <input type="date" placeholder="Дата начала аренды" required>
+                <input type="number" placeholder="Количество дней" min="1" required>
+            </div>
+            <button type="submit" id="bookBtn">Забронировать</button>
+            <div id="loader" style="display:none;">🔄 Идёт бронирование...</div>
+            <div id="successMsg" style="display:none; color: limegreen;">✅ Бронирование отправлено!</div>
+        </form>
+        
+        <a href="https://wa.me/77077282036" class="btn secondary"><i class="fab fa-whatsapp"></i> Написать в WhatsApp</a>
+    </section>
+
+    <section class="car-details">
+        <h2>Характеристики и особенности</h2>
+        <div class="car-details-grid">
+            <div class="detail-item">
+                <h3>Двигатель</h3>
+                <p>2.8 л турбодизель</p>
+            </div>
+            <div class="detail-item">
+                <h3>Мощность</h3>
+                <p>204 л.с.</p>
+            </div>
+            <div class="detail-item">
+                <h3>Крутящий момент</h3>
+                <p>500 Нм</p>
+            </div>
+            <div class="detail-item">
+                <h3>Клиренс</h3>
+                <p>310 мм</p>
+            </div>
+
+            <div class="detail-item">
+                <span>⛽</span>
+                <p><strong>Дизель</strong><br>Мощный и тяговитый двигатель</p>
+            </div>
+            <div class="detail-item">
+                <span>🛞</span>
+                <p><strong>Полный привод</strong><br>Система Multi-terrain Select</p>
+            </div>
+            <div class="detail-item">
+                <span>📦</span>
+                <p><strong>Грузовой отсек</strong><br>Длина 1525 мм</p>
+            </div>
+            <div class="detail-item">
+                <span>⛰️</span>
+                <p><strong>Внедорожный</strong><br>Угол въезда 29°</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const bookBtn = document.getElementById('bookBtn');
+        const loader = document.getElementById('loader');
+        const successMsg = document.getElementById('successMsg');
+        const whatsappLink = document.querySelector('.btn.secondary');
+        const bookingForm = document.getElementById('bookingForm');
+        
+        whatsappLink.style.display = 'none';
+      
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            loader.style.display = 'block';
+            successMsg.style.display = 'none';
+            whatsappLink.style.display = 'none';
+      
+            setTimeout(() => {
+                loader.style.display = 'none';
+                successMsg.style.display = 'block';
+                whatsappLink.style.display = 'inline-block';
+                bookingForm.reset();
+            }, 2000);
+        });
+
+        function changeMainImage(src) {
+            const mainImage = document.querySelector('.main-image');
+            mainImage.style.opacity = '0';
+            setTimeout(() => {
+                mainImage.src = src;
+                mainImage.style.opacity = '1';
+            }, 300);
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+    <section class="car-description">
+        <h2>Описание автомобиля</h2>
+        <p>Toyota Hilux Adventure — это легендарный пикап, созданный для настоящих приключений. Оснащенный мощным турбодизельным двигателем и интеллектуальной системой полного привода, он способен преодолеть самые сложные участки бездорожья. Высокий дорожный просвет и усиленная подвеска делают его идеальным выбором для экспедиций и активного отдыха. При этом комфортный салон с современным оборудованием обеспечивает приятное вождение как на трассе, так и в городе.</p>
+    </section>
+
+
+    <section class="rental-prices">
+        <h2>Цены на аренду</h2>
+        <table>
+            <tr>
+                <th>Срок аренды</th>
+                <th>Стоимость</th>
+            </tr>
+            <tr>
+                <td>1-2 дня</td>
+                <td>65 000 ₸/сутки</td>
+            </tr>
+            <tr>
+                <td>3-6 дней</td>
+                <td>60 000 ₸/сутки</td>
+            </tr>
+            <tr>
+                <td>7-14 дней</td>
+                <td>58 000 ₸/сутки</td>
+            </tr>
+            <tr>
+                <td>15-25 дней</td>
+                <td>57 000 ₸/сутки</td>
+            </tr>
+            <tr>
+                <td>от 26 дней</td>
+                <td>55 000 ₸/сутки</td>
+            </tr>
+        </table>
+    </section>
+
+    <section class="rental-terms">
+        <h2>Условия аренды</h2>
+        <ul>
+            <li>Паспорт и водительское удостоверение обязательно</li>
+            <li>Минимальный возраст – 25 лет</li>
+            <li>Стаж вождения от 3 лет</li>
+            <li>Залог – 200 000 ₸</li>
+        </ul>
+    </section>
+
+    <section class="reviews">
+        <h2>Отзывы клиентов</h2>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <p class="review-text">"Отличный выбор для рыбалки и охоты. Проходимость впечатляет!"</p>
+                <p class="review-author">- Сергей М.</p>
+                <div class="rating">⭐⭐⭐⭐⭐</div>
+            </div>
+            <div class="review-card">
+                <p class="review-text">"Брал для экспедиции по горам, машина превзошла все ожидания."</p>
+                <p class="review-author">- Бакыт К.</p>
+                <div class="rating">⭐⭐⭐⭐⭐</div>
+            </div>
+            <div class="review-card">
+                <p class="review-text">"Идеален для перевозки строительных материалов и выезда на природу."</p>
+                <p class="review-author">- Андрей П.</p>
+                <div class="rating">⭐⭐⭐⭐⭐</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="additional-features">
+        <h2>Дополнительные услуги</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <i class="fas fa-campground"></i>
+                <div>
+                    <h3>Походное снаряжение</h3>
+                    <p>+5000 ₸ / сутки</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-map-marked-alt"></i>
+                <div>
+                    <h3>GPS-навигатор</h3>
+                    <p>Бесплатно</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-toolbox"></i>
+                <div>
+                    <h3>Внедорожный комплект</h3>
+                    <p>+3000 ₸ / сутки</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-shield-alt"></i>
+                <div>
+                    <h3>Страховка КАСКО</h3>
+                    <p>Включено</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <h2>Часто задаваемые вопросы</h2>
+        <details>
+            <summary>Можно ли выезжать на бездорожье?</summary>
+            <p>Да, автомобиль предназначен для бездорожья. Необходимо соблюдать правила эксплуатации и технику безопасности.</p>
+        </details>
+        <details>
+            <summary>Какой расход топлива?</summary>
+            <p>8-10 л/100 км по трассе, 12-14 л/100 км по городу</p>
+        </details>
+        <details>
+            <summary>Есть ли ограничения по территории использования?</summary>
+            <p>Автомобиль можно использовать по всей территории Казахстана, включая грунтовые дороги</p>
+        </details>
+    </section>
+</body>
+</html>

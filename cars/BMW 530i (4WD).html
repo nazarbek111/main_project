@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMW 530i xDrive - Прокат автомобилей</title>
+    <link rel="stylesheet" href="../car-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="../index.html">
+                    <i class="fas fa-car-side"></i>
+                    <span class="logo-text">Nazarbek Premium Cars</span>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <a href="../index.html" class="nav-link">Главная</a>
+                <a href="../cars.html" class="nav-link">Каталог</a>
+                <a href="../index.html#contacts" class="nav-link">Контакты</a>
+                <a href="tel:+77077282036" class="nav-link phone-link">
+                    <i class="fas fa-phone"></i>
+                    +7 707 728 2036
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="namecar">
+        <h1>BMW 530i xDrive</h1>
+    </div>
+
+    <section class="car-details" id="bmw-530i">
+        <div class="car-gallery">
+            <img src="../images/BMW 530i (4WD).jpg" alt="BMW 530i xDrive" class="main-image">
+            <div class="gallery-thumbnails">
+                <img src="../images/BMW 530i (4WD).jpg" alt="Внешний вид" onclick="changeMainImage(this.src)">
+                <img src="../images/interior/bmw-530i-interior.png" alt="Интерьер" onclick="changeMainImage(this.src)">
+                <img src="../images/interior/bmw-530i-back.jpg" alt="Вид сзади" onclick="changeMainImage(this.src)">
+                <img src="../images/interior/bmw-530i-trunk.jpg" alt="Багажник" onclick="changeMainImage(this.src)">
+            </div>
+        </div>
+        <div class="car-info">
+            <p>Воплощение баварской роскоши и передовых технологий. BMW 530i xDrive сочетает в себе представительский статус, инновационные решения и великолепную управляемость.</p>
+            <p><strong>от 85 000 ₸/сутки</strong></p>
+        </div>
+        
+        <form class="booking-form" id="bookingForm">
+            <h2>Форма бронирования</h2>
+            <div class="form-group">
+                <input type="text" placeholder="Ваше имя" required>
+                <input type="tel" placeholder="Телефон" required>
+            </div>
+            <div class="form-group">
+                <input type="date" placeholder="Дата начала аренды" required>
+                <input type="number" placeholder="Количество дней" min="1" required>
+            </div>
+            <button type="submit" id="bookBtn">Забронировать</button>
+            <div id="loader" style="display:none;">🔄 Идёт бронирование...</div>
+            <div id="successMsg" style="display:none; color: limegreen;">✅ Бронирование отправлено!</div>
+        </form>
+        
+        <a href="https://wa.me/77077282036" class="btn secondary"><i class="fab fa-whatsapp"></i> Написать в WhatsApp</a>
+    </section>
+
+    <section class="car-details">
+        <h2>Характеристики и особенности</h2>
+        <div class="car-details-grid">
+            <div class="detail-item">
+                <h3>Двигатель</h3>
+                <p>2.0 л TwinPower Turbo</p>
+            </div>
+            <div class="detail-item">
+                <h3>Мощность</h3>
+                <p>249 л.с.</p>
+            </div>
+            <div class="detail-item">
+                <h3>Разгон до 100 км/ч</h3>
+                <p>6.4 сек</p>
+            </div>
+            <div class="detail-item">
+                <h3>Крутящий момент</h3>
+                <p>350 Нм</p>
+            </div>
+
+            <div class="detail-item">
+                <span>⛽</span>
+                <p><strong>Бензин</strong><br>TwinPower Turbo</p>
+            </div>
+            <div class="detail-item">
+                <span>⚙️</span>
+                <p><strong>xDrive</strong><br>Интеллектуальный полный привод</p>
+            </div>
+            <div class="detail-item">
+                <span>🛋</span>
+                <p><strong>Dakota</strong><br>Кожаная отделка</p>
+            </div>
+            <div class="detail-item">
+                <span>📱</span>
+                <p><strong>Live Cockpit</strong><br>Цифровая панель</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const bookBtn = document.getElementById('bookBtn');
+        const loader = document.getElementById('loader');
+        const successMsg = document.getElementById('successMsg');
+        const whatsappLink = document.querySelector('.btn.secondary');
+        const bookingForm = document.getElementById('bookingForm');
+        
+        whatsappLink.style.display = 'none';
+      
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            loader.style.display = 'block';
+            successMsg.style.display = 'none';
+            whatsappLink.style.display = 'none';
+      
+            setTimeout(() => {
+                loader.style.display = 'none';
+                successMsg.style.display = 'block';
+                whatsappLink.style.display = 'inline-block';
+                bookingForm.reset();
+            }, 2000);
+        });
+
+        function changeMainImage(src) {
+            const mainImage = document.querySelector('.main-image');
+            mainImage.style.opacity = '0';
+            setTimeout(() => {
+                mainImage.src = src;
+                mainImage.style.opacity = '1';
+            }, 300);
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+
+    <section class="car-description">
+        <h2>Описание автомобиля</h2>
+        <p>BMW 530i xDrive — это эталон бизнес-седана, в котором элегантность сочетается с передовыми технологиями. Автомобиль оснащен инновационной системой полного привода xDrive, которая обеспечивает превосходную управляемость в любых условиях. Просторный салон с премиальной отделкой, передовая информационно-развлекательная система и комплекс систем помощи водителю делают каждую поездку комфортной и безопасной.</p>
+    </section>
+
+    <section class="rental-prices">
+        <h2>Цены на аренду</h2>
+        <table>
+            <tr>
+                <th>Срок аренды</th>
+                <th>Стоимость</th>
+            </tr>
+            <tr>
+                <td>1-2 дня</td>
+                <td>95 000 ₸/сутки</td>
+            </tr>
+            <tr>
+                <td>3-6 дней</td>
+                <td>90 000 ₸/сутки</td>
+            </tr>
+            <tr>
+                <td>7-14 дней</td>
+                <td>88 000 ₸/сутки</td>
+            </tr>
+            <tr>
+                <td>15-25 дней</td>
+                <td>86 000 ₸/сутки</td>
+            </tr>
+            <tr>
+                <td>от 26 дней</td>
+                <td>85 000 ₸/сутки</td>
+            </tr>
+        </table>
+    </section>
+
+    <section class="rental-terms">
+        <h2>Условия аренды</h2>
+        <ul>
+            <li>Паспорт и водительское удостоверение обязательно</li>
+            <li>Минимальный возраст – 25 лет</li>
+            <li>Стаж вождения от 5 лет</li>
+            <li>Залог – 400 000 ₸</li>
+        </ul>
+    </section>
+
+    <section class="reviews">
+        <h2>Отзывы клиентов</h2>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <p class="review-text">"Идеальный автомобиль для деловых встреч. Презентабельный и комфортный."</p>
+                <p class="review-author">- Дмитрий В.</p>
+                <div class="rating">⭐⭐⭐⭐⭐</div>
+            </div>
+            <div class="review-card">
+                <p class="review-text">"Отличная управляемость и современные технологии. Впечатлен!"</p>
+                <p class="review-author">- Артур М.</p>
+                <div class="rating">⭐⭐⭐⭐⭐</div>
+            </div>
+            <div class="review-card">
+                <p class="review-text">"Комфорт бизнес-класса и динамика спорткара. Рекомендую!"</p>
+                <p class="review-author">- Евгений К.</p>
+                <div class="rating">⭐⭐⭐⭐⭐</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="additional-features">
+        <h2>Премиум услуги</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <i class="fas fa-user-tie"></i>
+                <div>
+                    <h3>Персональный водитель</h3>
+                    <p>+25000 ₸ / сутки</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-plane-arrival"></i>
+                <div>
+                    <h3>Встреча в аэропорту</h3>
+                    <p>Бесплатно</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-wifi"></i>
+                <div>
+                    <h3>Wi-Fi роутер</h3>
+                    <p>+1000 ₸ / сутки</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-shield-alt"></i>
+                <div>
+                    <h3>Премиум страховка</h3>
+                    <p>Включено</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <h2>Часто задаваемые вопросы</h2>
+        <details>
+            <summary>Какое топливо необходимо?</summary>
+            <p>Рекомендуется использовать бензин с октановым числом 95 или выше</p>
+        </details>
+        <details>
+            <summary>Доступен ли режим Sport?</summary>
+            <p>Да, доступны режимы Eco Pro, Comfort, Sport и Sport+</p>
+        </details>
+        <details>
+            <summary>Как работает система xDrive?</summary>
+            <p>Система автоматически распределяет крутящий момент между осями для оптимального сцепления</p>
+        </details>
+    </section>
+</body>
+</html>
