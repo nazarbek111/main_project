@@ -1,0 +1,657 @@
+/* Основные стили и переменные */
+:root {
+    --primary-color: #a4c639;
+    --secondary-color: #93b130;
+    --dark-color: #1a1a1a;
+    --light-color: #f8f8f8;
+    --shadow-color: rgba(0,0,0,0.08);
+    --transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.5;
+    color: var(--dark-color);
+    background: var(--light-color);
+    overflow-x: hidden;
+    margin: 0;
+}
+
+/* Контейнер и секции */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+section {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem 1.5rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    transition: var(--transition);
+}
+
+/* Шапка */
+.site-header {
+    background: linear-gradient(135deg, var(--dark-color), #333, var(--dark-color));
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--light-color);
+}
+
+.logo i {
+    font-size: 1.8rem;
+    margin-right: 0.5rem;
+    color: var(--primary-color);
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.main-nav {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-link {
+    color: #ffffff !important;
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.phone-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 25px;
+}
+
+.phone-link:hover {
+    background: var(--primary-color);
+    color: var(--dark-color);
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .main-nav {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .phone-link {
+        margin-top: 0.5rem;
+    }
+}
+
+h1, h2 {
+    color: var(--dark-color);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+h1 {
+    color: white;
+    font-size: 1.8rem;
+    margin: 0.5rem 0;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+/* Навигация */
+.main-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0.3rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 25px;
+    margin: 0.5rem auto;
+    max-width: fit-content;
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    transition: var(--transition);
+    font-size: 0.9rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: var(--transition);
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Галерея */
+.car-gallery {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    margin-bottom: 2rem;
+}
+
+.main-image {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    margin: 0 auto 1.5rem;
+    display: block;
+    transition: var(--transition);
+}
+
+.gallery-thumbnails {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    padding: 0.8rem;
+    background: var(--light-color);
+    border-radius: 12px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+}
+
+.gallery-thumbnails img {
+    width: 100px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.gallery-thumbnails img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+/* Форма бронирования */
+.booking-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    max-width: 500px;
+    margin: 2rem auto;
+}
+
+.form-group {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group input {
+    flex: 1;
+    padding: 0.8rem;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+.form-group input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(164,198,57,0.1);
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 1rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+button:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(164,198,57,0.3);
+}
+
+button:focus {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.car-details {
+  padding: 2rem 1rem;
+  background-color: #f8f8f8;
+  border-radius: 16px;
+  max-width: 1000px;
+  margin: 2rem auto;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.car-details h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+.car-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.detail-item {
+  background: white;
+  border-radius: 12px;
+  padding: 1.2rem;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.detail-item:hover {
+  transform: translateY(-5px);
+}
+
+.detail-item span {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+/* Таблица цен */
+.rental-prices {
+    padding: 2rem;
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.rental-prices table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.rental-prices th {
+    background: var(--primary-color);
+    color: white;
+    padding: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+.rental-prices td {
+    padding: 1.2rem;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+    transition: background-color 0.3s ease;
+}
+
+.rental-prices tr:hover td {
+    background-color: #f8f8f8;
+}
+
+.rental-prices tr:last-child td {
+    border-bottom: none;
+}
+
+.rental-prices td:last-child {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+/* Отзывы */
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.review-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px var(--shadow-color);
+    transition: var(--transition);
+    position: relative;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+}
+
+.rating {
+    color: #ffd700;
+    margin-top: 1rem;
+}
+
+
+
+/* Доп услуги */
+.additional-features {
+  padding: 2rem 1rem;
+  background-color: #f9f9f9;
+  border-radius: 16px;
+  max-width: 1000px;
+  margin: 2rem auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.additional-features h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  color: #222;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.5rem;
+}
+
+.feature-item {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feature-item:hover {
+  transform: translateY(-5px);
+}
+
+.feature-item i {
+  font-size: 2.5rem;
+  color: limegreen; /* или var(--primary-color) */
+  margin-bottom: 1rem;
+}
+
+.feature-item h3 {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+  color: #333;
+}
+
+.feature-item p {
+  font-size: 0.95rem;
+  color: #666;
+}
+
+/* FAQ */
+.faq {
+    max-width: 700px;
+    margin: 3rem auto;
+}
+
+.faq details {
+    background: white;
+    margin-bottom: 1rem;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    transition: var(--transition);
+}
+
+.faq summary {
+    padding: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    background: var(--light-color);
+    font-size: 1rem;
+}
+
+.faq details[open] summary {
+    border-bottom: 1px solid #eee;
+}
+
+.faq p {
+    padding: 1.5rem;
+    margin: 0;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    section {
+        padding: 1.5rem 1rem;
+        margin: 1.5rem auto;
+    }
+
+    .form-group {
+        flex-direction: column;
+    }
+
+    .main-nav {
+        flex-direction: column;
+        border-radius: 15px;
+    }
+
+    .main-image {
+        max-height: 350px;
+    }
+
+    .gallery-thumbnails {
+        gap: 0.5rem;
+    }
+
+    .gallery-thumbnails img {
+        width: 80px;
+        height: 60px;
+    }
+}
+
+/* Медиа-запрос для мобильных устройств */
+@media (max-width: 768px) {
+    .car-video {
+        padding: 1.5rem 0.5rem;
+    }
+    
+    .car-video video {
+        border-radius: 8px;
+    }
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+section {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+section:nth-child(2) { animation-delay: 0.2s; }
+section:nth-child(3) { animation-delay: 0.4s; }
+section:nth-child(4) { animation-delay: 0.6s; }
+
+/* Погодный виджет */
+.weather-widget {
+    background: rgba(255,255,255,0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.weather-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+}
+
+.weather-info img {
+    width: 40px;
+    height: 40px;
+}
+
+/* Улучшения для доступности */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px;
+    z-index: 1001;
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Улучшенная фокусировка для доступности */
+a:focus,
+button:focus {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Улучшенный контраст для кнопок */
+button,
+.btn {
+    position: relative;
+    overflow: hidden;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+button:hover,
+.btn:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+/* Анимации с учетом предпочтений пользователя */
+@media (prefers-reduced-motion: no-preference) {
+    .feature,
+    .car-card {
+        transition: transform 0.3s ease;
+    }
+    
+    .feature:hover,
+    .car-card:hover {
+        transform: translateY(-5px);
+    }
+}
+
+.namecar {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  background: #A4C639
+
+}
+
+.namecar h1 {
+  font-size: 2.2rem;
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
